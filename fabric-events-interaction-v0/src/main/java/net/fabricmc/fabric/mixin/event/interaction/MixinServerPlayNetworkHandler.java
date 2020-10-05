@@ -28,6 +28,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
@@ -43,7 +44,7 @@ public class MixinServerPlayNetworkHandler {
 		Entity entity = packet.getEntity(world);
 
 		if (entity != null) {
-			EntityHitResult hitResult = new EntityHitResult(entity, packet.getHitPosition().add(entity.getX(), entity.getY(), entity.getZ()));
+			EntityHitResult hitResult = new EntityHitResult(entity, packet.getHitPosition().add(entity.getX(), entity.getY(), entity.getZ()), (float) new Vec3d(player.getX(), player.getEyeY(), player.getZ()).distanceTo(packet.getHitPosition()));
 
 			ActionResult result = UseEntityCallback.EVENT.invoker().interact(player, world, packet.getHand(), entity, hitResult);
 
