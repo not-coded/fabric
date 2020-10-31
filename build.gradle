@@ -20,7 +20,7 @@ def ENV = System.getenv()
 class Globals {
 	static def baseVersion = "0.22.1"
 	static def mcVersion = "1.16_combat-6"
-	static def yarnVersion = "+build.1"
+	static def yarnVersion = "+build.2"
 }
 
 version = Globals.baseVersion + "+" + (ENV.BUILD_NUMBER ? ("build." + ENV.BUILD_NUMBER) : "local") + "-" + getBranch()
@@ -88,14 +88,14 @@ allprojects {
 		mavenLocal()
 		maven {
 			name "CombatReforged"
-			url "http://maven.combatreforged.com"
+			url "https://maven.combatreforged.com"
 		}
 	}
 
 	minecraft {
 		customManifest = "https://gist.githubusercontent.com/rizecookey/4c6142baaccc3875f9b227fe22f2ace5/raw/c8ed74b19f7a5315813c9d4b199798b692a8f359/1.16_combat-6.json"
 		intermediaryUrl = { mcVersion ->
-			return "http://maven.combatreforged.com/net/fabricmc/intermediary/${mcVersion}/intermediary-${mcVersion}-v2.jar";
+			return "https://maven.combatreforged.com/net/fabricmc/intermediary/${mcVersion}/intermediary-${mcVersion}-v2.jar";
 		}
 	}
 
