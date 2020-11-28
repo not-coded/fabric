@@ -24,7 +24,7 @@ class Globals {
 	static def loaderVersion = "0.10.5+build.213"
 }
 
-version = Globals.baseVersion + "+" + (ENV.BUILD_NUMBER ? ("build." + ENV.BUILD_NUMBER) : "local") + "-" + getBranch()
+version = Globals.baseVersion + "+" + (ENV.BUILD_NUMBER ? "" : "local-") + getBranch()
 logger.lifecycle("Building Fabric: " + version)
 
 import org.apache.commons.codec.digest.DigestUtils
