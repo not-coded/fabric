@@ -16,19 +16,22 @@
 
 package net.fabricmc.fabric.test.item;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.CustomDamageHandler;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 
-// Disabled
 public class CustomDamageTest implements ModInitializer {
 	@Override
 	public void onInitialize() {
-		//Registry.register(Registry.ITEM, new Identifier("fabric-item-api-v1-testmod", "weird_pickaxe"), new WeirdPick());
+		Registry.register(Registry.ITEM, new Identifier("fabric-item-api-v1-testmod", "weird_pickaxe"), new WeirdPick());
 	}
 
 	public static final CustomDamageHandler WEIRD_DAMAGE_HANDLER = (stack, amount, entity, breakCallback) -> {
@@ -44,18 +47,13 @@ public class CustomDamageTest implements ModInitializer {
 
 	public static class WeirdPick extends PickaxeItem {
 		protected WeirdPick() {
-			//Disabled
-			super(ToolMaterials.GOLD, new FabricItemSettings().customDamage(WEIRD_DAMAGE_HANDLER));
+			super(ToolMaterials.GOLD, 1, -2.8F, new FabricItemSettings().customDamage(WEIRD_DAMAGE_HANDLER));
 		}
-
-		/*
 
 		@Override
 		public Text getName(ItemStack stack) {
 			int v = stack.getOrCreateTag().getInt("weird");
-			return super.getName(stack.getEnchan).shallowCopy().append(" (Weird Value: " + v + ")");
+			return super.getName(stack).shallowCopy().append(" (Weird Value: " + v + ")");
 		}
-
-		 */
 	}
 }
