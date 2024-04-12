@@ -17,7 +17,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.8.9",
-    "minecraft": "~1.16.2-alpha.20.28.a"
+    "minecraft": "~1.16.2-alpha.1.16.combat-6"
   },
   "description": "Core API module providing key hooks and intercompatibility features."
 }

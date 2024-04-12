@@ -18,7 +18,8 @@ plugins {
 
 def ENV = System.getenv()
 
-version = project.version + "+" + (ENV.GITHUB_RUN_NUMBER ? "" : "local-") + getBranch()
+version = project.version + "+" + /*(ENV.BUILD_NUMBER ? */""/* : "local-")*/ + getBranch()
+
 logger.lifecycle("Building Fabric: " + version)
 
 import org.apache.commons.codec.digest.DigestUtils
@@ -117,6 +118,17 @@ allprojects {
 
 	repositories {
 		mavenLocal()
+
+		maven {
+			name "CombatReforged"
+			url "https://maven.rizecookey.net"
+		}
+
+
+		minecraft {
+			customMinecraftManifest = "https://gist.githubusercontent.com/rizecookey/4c6142baaccc3875f9b227fe22f2ace5/raw/c8ed74b19f7a5315813c9d4b199798b692a8f359/1.16_combat-6.json"
+			intermediaryUrl = "https://maven.rizecookey.net/net/fabricmc/intermediary/%1\$s/intermediary-%1\$s-v2.jar"
+		}
 	}
 
 	processResources {

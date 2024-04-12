@@ -37,7 +37,9 @@ public class TestDynamicSwordItem extends SwordItem implements DynamicAttributeT
 	public static final UUID TEST_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
 
 	public TestDynamicSwordItem(Settings settings) {
-		super(ToolMaterials.DIAMOND, 6, -2.4f, settings);
+		// Disabled
+
+		super(ToolMaterials.DIAMOND, settings);
 	}
 
 	@Override

@@ -47,7 +47,9 @@ public class CustomDamageTest implements ModInitializer {
 
 	public static class WeirdPick extends PickaxeItem {
 		protected WeirdPick() {
-			super(ToolMaterials.GOLD, 1, -2.8F, new FabricItemSettings().customDamage(WEIRD_DAMAGE_HANDLER));
+			// Disabled
+
+			super(ToolMaterials.GOLD, new FabricItemSettings().customDamage(WEIRD_DAMAGE_HANDLER));
 		}
 
 		@Override
